@@ -22,6 +22,8 @@ $('#design').change( e => {
         //Remove the disabled attr and change the text of the T-Shirt color menu
         $('#color').removeAttr('disabled');
         $('label[for="color"]').text("Color:");
+        //Hide the 'Select a Theme' option from the select menu
+        $('#design').children().first().hide();
 
         //List of options in the select menu
         const $options = $('#color').children();
