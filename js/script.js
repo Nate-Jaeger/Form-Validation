@@ -25,6 +25,7 @@ $('#design').change( e => {
 
         //List of options in the select menu
         const $options = $('#color').children();
+        //Loop through the $options array to show/hide 
         $options.each((index, element) => {
             if (index < 3){
                 $(element).show();
