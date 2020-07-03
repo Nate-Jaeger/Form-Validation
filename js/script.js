@@ -10,3 +10,8 @@ $('#title').on('change', e =>{
     }
 });
 
+
+//Hide T-Shirt color options until a design is picked
+if ($('#design').val() === "Select Theme"){
+    $('#color').val($('<option>Please select a T-shirt theme</option>'));
+}
