@@ -111,19 +111,19 @@ $('#bitcoin').hide();
 $('#payment').change(e => {
     const paymentSelection = {
         creditCard: () => {
-        $('#credit-card').show();
-        $('#paypal').hide();
-        $('#bitcoin').hide();
+            $('#credit-card').show();
+            $('#paypal').hide();
+            $('#bitcoin').hide();
         },
         paypal: () => {
-        $('#paypal').show();
-        $('#credit-card').hide();
-        $('#bitcoin').hide();
+            $('#paypal').show();
+            $('#credit-card').hide();
+            $('#bitcoin').hide();
         },
         bitcoin: () => {
-        $('#bitcoin').show();
-        $('#credit-card').hide();
-        $('#paypal').hide();
+            $('#bitcoin').show();
+            $('#credit-card').hide();
+            $('#paypal').hide();
         }
     };
 
