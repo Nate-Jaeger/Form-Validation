@@ -127,6 +127,8 @@ $('#payment').change(e => {
             $('#paypal').hide();
         }
     };
+
+    //Switch statement to determine which payment HTML element needs to be displayed
     switch (paymentOption){
         case "credit card":
             payment.creditCard();
@@ -140,5 +142,4 @@ $('#payment').change(e => {
         default:
             break;
     }
-    
 });
