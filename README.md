@@ -11,3 +11,5 @@
 -Activities section will update your total costs as you select/deselect events 
     -Events with conflicting times will be disabled
     -Deselecting events will re-enable currently disabled conflicting events
+
+-Payment section will reflect proper HTML based on what payment selection the user has made
