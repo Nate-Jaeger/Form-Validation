@@ -70,17 +70,38 @@ $('.activities').change( e => {
     const activity = e.target;
     const $cost = parseInt($(e.target).attr('data-cost'));
     const $time = $(e.target).attr('data-day-and-time');
-    console.log($time);
     
+    //Add/Subtract the cost of the course that was just checked/unchecked
     if (activity.checked){
         //Add and Set totalCost and display the new value to the user
         totalCost += $cost;
         totalP.text(`Total: $${totalCost}`);
-        
     } else {
         //Subtract and Set totalCost and display the new value to the user
         totalCost -= $cost;
         totalP.text(`Total: $${totalCost}`);
+        $(activity).parent().attr('disabled', false);
+    }
+
+    //Disable activities that have conflicting scheduals
+    for (let i = 0; i < activitiesCollection.length; i++){
+        let activityTime = $(activitiesCollection[i]).attr('data-day-and-time');
+
+        if(activityTime === $time && activitiesCollection[i] !== activity){
+            if (activity.checked){
+                //Disable conflicting workshops
+             $(activitiesCollection[i]).attr('disabled', true);
+             $(activitiesCollection[i]).parent().addClass("disabled");
+            } 
+            else {
+            
+            }
+        }
+        else {
+            //Enable clicked checkbox and add the disabled class to its label
+            $(activitiesCollection[i]).attr('disabled', false);
+            $(activitiesCollection[i]).parent().removeClass("disabled");
+        }
     }
 });
 
