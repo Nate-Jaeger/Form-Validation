@@ -109,7 +109,8 @@ $('#bitcoin').hide();
 
 //Change event listener on the payment select menu
 $('#payment').change(e => {
-    const paymentSelection = {
+    const paymentOption = $('#payment').val();
+    const payment = {
         creditCard: () => {
             $('#credit-card').show();
             $('#paypal').hide();
@@ -126,15 +127,18 @@ $('#payment').change(e => {
             $('#paypal').hide();
         }
     };
-
-    //Check what payment option was selected and display payment divs accordingly
-    if ($('#payment').val() === "credit card"){
-        paymentSelection.creditCard();
+    switch (paymentOption){
+        case "credit card":
+            payment.creditCard();
+            break;
+        case "paypal":
+            payment.paypal();
+            break;
+        case "bitcoin":
+            payment.bitcoin();
+            break;
+        default:
+            break;
     }
-    else if ($('#payment').val() === "paypal"){
-        paymentSelection.paypal();
-    }
-    else {
-        paymentSelection.bitcoin();
-    }
+    
 });
