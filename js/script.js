@@ -17,6 +17,7 @@ $('#title').on('change', e =>{
 //Disable the T-Shirt color options until a design is picked
 $('label[for="color"]').text("Please select a T-shirt theme");
 $('#color').attr('disabled', 'disabled');
+$('#color').val("");
 
 //Change event to switch between states when user is choosing between T-Shirt Themes
 $('#design').change( e => {
@@ -55,15 +56,27 @@ $('#design').change( e => {
     }
 });
 
+
+        //Create/Append HTML element to display Total
+let totalCost = 0;
+const totalP = $(`<p>Total: $0 </p>`);
+$('.activities').append(totalP);
+
+
         //User can't select events at conflicting times
 
-//Lists of checkboxes for different dates
-const $tuesNineToTwelve = $('[data-day-and-time="Tuesday 9am-12pm"]');
-const $tuesOneToFour = $('[data-day-and-time="Tuesday 1pm-4pm"]');
-const $wedNineToTwelve = $('[data-day-and-time="Wednesday 9am-12pm"]');
-const $wedOneToFour = $('[data-day-and-time="Wednesday 1pm-4pm"]');
-
-
+$('.activities').change( e => {
+    const activity = e.target;
+    const $cost = parseInt($(e.target).attr('data-cost'));
+    
+    if (activity.checked){
+        totalCost += $cost;
+        totalP.text(`Total: $${totalCost}`);
+    } else {
+        totalCost -= $cost;
+        totalP.text(`Total: $${totalCost}`);
+    }
+});
 
 
 
