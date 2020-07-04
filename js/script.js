@@ -83,6 +83,7 @@ $('.activities').change( e => {
         $(activity).parent().attr('disabled', false);
     }
 
+
     //Disable activities that have conflicting scheduals
     for (let i = 0; i < activitiesCollection.length; i++){
         let activityTime = $(activitiesCollection[i]).attr('data-day-and-time');
@@ -94,14 +95,12 @@ $('.activities').change( e => {
              $(activitiesCollection[i]).parent().addClass("disabled");
             } 
             else {
-            
+                //Enable clicked checkbox and add the disabled class to its label
+                $(activitiesCollection[i]).attr('disabled', false);
+                $(activitiesCollection[i]).parent().removeClass("disabled");
             }
         }
-        else {
-            //Enable clicked checkbox and add the disabled class to its label
-            $(activitiesCollection[i]).attr('disabled', false);
-            $(activitiesCollection[i]).parent().removeClass("disabled");
-        }
+        
     }
 });
 
