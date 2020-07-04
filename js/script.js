@@ -28,7 +28,7 @@ $('#design').change( e => {
     //Remove disabled attr on color options and change the text of the T-Shirt color menu
     $('#color').removeAttr('disabled');
     $('label[for="color"]').text("Color:");
-    //Hide the 'Select a Theme' option from the select menu
+    //Hide the 'Select a Theme' option from the select menu after a theme selection has been made
     $('#design').children().first().hide();
 
     if (theme === "js puns"){
@@ -100,7 +100,29 @@ $('.activities').change( e => {
 });
 
 
+    //Hide the "Select Payment Method" in the payment dropdown and make CC the selected option
+$('#payment option[value="select method"]').hide();
+$('#payment option[value="credit card"]').attr('selected', true);
+//Hide all other payment divs since CC will be the one to display automaticlly
+$('#paypal').hide();
+$('#bitcoin').hide();
 
+//Change event listener on the payment select menu
+$('#payment').change(e => {
 
-
-
+    if ($('#payment').val() === "credit card"){
+        $('#credit-card').show();
+        $('#paypal').hide();
+        $('#bitcoin').hide();
+    }
+    else if ($('#payment').val() === "paypal"){
+        $('#paypal').show();
+        $('#credit-card').hide();
+        $('#bitcoin').hide();
+    }
+    else {
+        $('#bitcoin').show();
+        $('#credit-card').hide();
+        $('#paypal').hide();
+    }
+});
