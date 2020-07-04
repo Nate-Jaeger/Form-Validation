@@ -16,7 +16,7 @@ $('#title').on('change', e =>{
 
 //Disable the T-Shirt color options until a design is picked
 $('label[for="color"]').text("Please select a T-shirt theme");
-$('#color').attr('disabled', 'disabled');
+$('#color').attr('disabled', true);
 $('#color').val("");
 
 //Change event to switch between states when user is choosing between T-Shirt Themes
@@ -57,30 +57,25 @@ $('#design').change( e => {
 });
 
 
-        //Create/Append HTML element to display Total
+    //Create/Append HTML element to display Total
 let totalCost = 0;
 const totalP = $(`<p id="total">Total: $0 </p>`);
 $('.activities').append(totalP);
 
-
-        //User can't select events at conflicting times
-
+    //Change event on activities section
 $('.activities').change( e => {
     const activitiesCollection = $('.activities input');
     const activity = e.target;
     const $cost = parseInt($(e.target).attr('data-cost'));
     const $time = $(e.target).attr('data-day-and-time');
     
-    //Add/Subtract the cost of the course that was just checked/unchecked
+    //Add or Subtract the cost of the course that was just checked/unchecked
     if (activity.checked){
-        //Add and Set totalCost and display the new value to the user
         totalCost += $cost;
         totalP.text(`Total: $${totalCost}`);
     } else {
-        //Subtract and Set totalCost and display the new value to the user
         totalCost -= $cost;
         totalP.text(`Total: $${totalCost}`);
-        $(activity).parent().attr('disabled', false);
     }
 
 
@@ -95,7 +90,7 @@ $('.activities').change( e => {
              $(activitiesCollection[i]).parent().addClass("disabled");
             } 
             else {
-                //Enable clicked checkbox and add the disabled class to its label
+                //Enable clicked checkbox and remove the disabled class from its label
                 $(activitiesCollection[i]).attr('disabled', false);
                 $(activitiesCollection[i]).parent().removeClass("disabled");
             }
