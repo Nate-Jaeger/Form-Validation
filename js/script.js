@@ -66,13 +66,19 @@ $('.activities').append(totalP);
         //User can't select events at conflicting times
 
 $('.activities').change( e => {
+    const activitiesCollection = $('.activities input');
     const activity = e.target;
     const $cost = parseInt($(e.target).attr('data-cost'));
+    const $time = $(e.target).attr('data-day-and-time');
+    console.log($time);
     
     if (activity.checked){
+        //Add and Set totalCost and display the new value to the user
         totalCost += $cost;
         totalP.text(`Total: $${totalCost}`);
+        
     } else {
+        //Subtract and Set totalCost and display the new value to the user
         totalCost -= $cost;
         totalP.text(`Total: $${totalCost}`);
     }
