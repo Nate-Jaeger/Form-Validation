@@ -109,20 +109,32 @@ $('#bitcoin').hide();
 
 //Change event listener on the payment select menu
 $('#payment').change(e => {
-
-    if ($('#payment').val() === "credit card"){
+    const paymentSelection = {
+        creditCard: () => {
         $('#credit-card').show();
         $('#paypal').hide();
         $('#bitcoin').hide();
-    }
-    else if ($('#payment').val() === "paypal"){
+        },
+        paypal: () => {
         $('#paypal').show();
         $('#credit-card').hide();
         $('#bitcoin').hide();
-    }
-    else {
+        },
+        bitcoin: () => {
         $('#bitcoin').show();
         $('#credit-card').hide();
         $('#paypal').hide();
+        }
+    };
+
+    //Check what payment option was selected and display payment divs accordingly
+    if ($('#payment').val() === "credit card"){
+        paymentSelection.creditCard();
+    }
+    else if ($('#payment').val() === "paypal"){
+        paymentSelection.paypal();
+    }
+    else {
+        paymentSelection.bitcoin();
     }
 });
