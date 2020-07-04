@@ -59,7 +59,7 @@ $('#design').change( e => {
 
         //Create/Append HTML element to display Total
 let totalCost = 0;
-const totalP = $(`<p>Total: $0 </p>`);
+const totalP = $(`<p id="total">Total: $0 </p>`);
 $('.activities').append(totalP);
 
 

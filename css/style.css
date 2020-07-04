@@ -152,6 +152,14 @@ option {
 	margin-bottom: 0;
 }
 
+#total {
+	line-height: 25px;
+	font-size: 25px;
+	margin-left: 70%;
+	margin-bottom: 0;
+	font-weight: bold;
+}
+
 .credit-card {
 	margin-top: 1.25em;
 }
