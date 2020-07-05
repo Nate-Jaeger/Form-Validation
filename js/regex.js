@@ -32,6 +32,23 @@ function isEventChecked(){
     }
 }
 
-function isValidCard(card){
+//Validate that user's CC information is correct
+function isValidCard(){
+    //Grab values from all CC input fields
+    const cardNum = document.getElementById('cc-num').value;
+    const zipCode = document.getElementById('zip').value;
+    const CVV = document.getElementById('cvv').value;
 
+    //Check if each CC info input is NOT passing regex, otherwise return true
+    if (!(/^\d{13,16}$/.test(cardNum))) {
+        return false;
+    }
+    else if (!(/^\d{5}$/.test(zipCode))) {
+        return false;
+    }
+    else if (!(/^\d{3}$/.test(CVV))) {
+        return false;
+    }
+    //If none of the credentials failed and returned false, true will be returned
+    return true;
 }
