@@ -7,7 +7,7 @@ function isValidUsername() {
 //Validate user E-mail
 function isValidEmail() {
     const email = document.getElementById('mail');
-    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i.test(email.value);
+    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{3})+$/i.test(email.value);
 }
 
 //Validate if the user has selected at least 1 event
@@ -63,6 +63,8 @@ function validateInputs(){
                     if(isValidCard()){
                         return true;
                     }
+                } else {
+                    return true;
                 }
             }
         }

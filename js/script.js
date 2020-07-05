@@ -148,9 +148,11 @@ $('#payment').change(e => {
 $('[type="submit"]').click( (e) => {
     //Check if all input validations return true
     if (validateInputs()) { 
-        break;
+        e.preventDefault();
+        console.log("Valid Inputs");
     }
     else{
         e.preventDefault();
+        console.log("Invalid Inputs");
     }
 });
