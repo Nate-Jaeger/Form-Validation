@@ -53,8 +53,8 @@ function isEventChecked() {
     message.style.display = "inline";
     return isBoxChecked;
   } else {
-		message.style.display = "none";
-		return isBoxChecked;
+    message.style.display = "none";
+    return isBoxChecked;
   }
 }
 
