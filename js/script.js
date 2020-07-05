@@ -143,3 +143,9 @@ $('#payment').change(e => {
             break;
     }
 });
+
+
+//Make sure CC option is selected before validating it
+if ($('#payment').val() === "credit card") {
+    isValidCard();
+}

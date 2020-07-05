@@ -1,13 +1,12 @@
-//Global input variables
-const userName = document.getElementById('name').value;
-
 //Validate user's input name. Includes some special characters
-function isValidUsername(username) {
-    return /^[a-z ,.'-]+$/i.test(username);
+function isValidUsername() {
+    const userName = document.getElementById('name').value;
+    return /^[a-z ,.'-]+$/i.test(userName);
 }
 
 //Validate user E-mail
-function isValidEmail(email) {
+function isValidEmail() {
+    const email = document.getElementById('mail').value;
     return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i.test(email);
 }
 
@@ -31,4 +30,8 @@ function isEventChecked(){
     else{
         return false;
     }
+}
+
+function isValidCard(card){
+
 }
