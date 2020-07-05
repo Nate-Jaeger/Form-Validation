@@ -44,38 +44,65 @@ function isEventChecked() {
 
 //Validate that user's CC information is correct
 function isValidCard() {
-  //Grab values from all CC input fields
+  //Grab elements of all CC input fields
   const cardNum = document.getElementById("cc-num");
   const zipCode = document.getElementById("zip");
   const CVV = document.getElementById("cvv");
+  let allPass = true;
 
-  //Check if CC payment option is selected before validating inputs
-  if ($("#payment").val() === "credit card") {
-    //Check if each CC info input is failing regex test, if it is, function will return false
+  // Functions to check each input individually
+  function validateCard() {
     if (!/^\d{13,16}$/.test(cardNum.value)) {
-      return false;
-    } else if (!/^\d{5}$/.test(zipCode.value)) {
-      return false;
-    } else if (!/^\d{3}$/.test(CVV.value)) {
-      return false;
+      cardNum.classList.add("invalid");
+      allPass = false;
+    } else {
+      cardNum.classList.remove("invalid");
     }
   }
 
-  //If none of the credentials failed and returned false, true will be returned
-  return true;
+  function validateZip() {
+    if (!/^\d{5}$/.test(zipCode.value)) {
+      zipCode.classList.add("invalid");
+      allPass = false;
+    } else {
+      zipCode.classList.remove("invalid");
+    }
+  }
+
+  function validateCVV() {
+    if (!/^\d{3}$/.test(CVV.value)) {
+      CVV.classList.add("invalid");
+      allPass = false;
+    } else {
+      CVV.classList.remove("invalid");
+    }
+  }
+
+  //Check if CC payment option is selected before validating inputs
+  if ($("#payment").val() === "credit card") {
+    validateCard();
+    validateZip();
+    validateCVV();
+  }
+
+  //If none of the credentials failed, true will be returned
+  return allPass;
 }
 
 //Function to call all other validation functions
 function validateInputs() {
+  //Call functions to enable styling if they are invalid
+  isValidUsername();
+  isValidEmail();
+  isValidCard();
   //Check if all input validations return true
-  if (isValidUsername()) {
-    if (isValidEmail()) {
-      if (isEventChecked()) {
-        if (isValidCard()) {
-          return true;
-        }
-      }
-    }
+  if (
+    isValidUsername() &&
+    isValidEmail() &&
+    isEventChecked() &&
+    isValidCard()
+  ) {
+    return true;
   }
   return false;
 }
