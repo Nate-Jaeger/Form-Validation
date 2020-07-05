@@ -30,7 +30,7 @@ function isValidEmail() {
 const legend = document.querySelector(".activities legend");
 const message = document.createElement("p");
 message.classList.add("not-checked");
-message.textContent = "MUST SELECT AT LEAST 1 EVENT";
+message.textContent = "*MUST SELECT AT LEAST 1 EVENT*";
 legend.appendChild(message);
 message.style.display = "none";
 
@@ -53,7 +53,8 @@ function isEventChecked() {
     message.style.display = "inline";
     return isBoxChecked;
   } else {
-    message.style.display = "none";
+		message.style.display = "none";
+		return isBoxChecked;
   }
 }
 

@@ -33,7 +33,8 @@ $("#design").change((e) => {
     $("#color").val($options[0].value);
     //Loop through the $options collection to show/hide appropriate colors
     $options.each((index, element) => {
-      if (index < 3) {
+      //Test elements textContent, will display if it contains (JS Puns shirt only)
+      if (/\(JS Puns shirt only\)/i.test(element.textContent)) {
         $(element).show();
       } else {
         $(element).hide();
@@ -42,7 +43,7 @@ $("#design").change((e) => {
   } else if (theme === "heart js") {
     $("#color").val($options[3].value);
     $options.each((index, element) => {
-      if (index > 2) {
+      if (/JS shirt only\)$/i.test(element.textContent)) {
         $(element).show();
       } else {
         $(element).hide();
