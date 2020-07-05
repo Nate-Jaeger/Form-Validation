@@ -52,3 +52,20 @@ function isValidCard(){
     //If none of the credentials failed and returned false, true will be returned
     return true;
 }
+
+//Function to call all other validation functions
+function validateInputs(){
+    //Check if all input validations return true
+    if(isValidUsername()){
+        if(isValidEmail()){
+            if(isEventChecked()){
+                if ($('#payment').val() === "credit card") {
+                    if(isValidCard()){
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+    return false;
+}

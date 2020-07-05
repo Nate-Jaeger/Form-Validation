@@ -144,19 +144,13 @@ $('#payment').change(e => {
     }
 });
 
-
-//Listen for a submit event on the submit button
+//Listen for a click event on the submit button
 $('[type="submit"]').click( (e) => {
     //Check if all input validations return true
-    if (condition) {
-        
+    if (validateInputs()) { 
+        break;
     }
     else{
         e.preventDefault();
     }
 });
-
-//Make sure CC option is selected before validating it
-if ($('#payment').val() === "credit card") {
-    isValidCard();
-}
