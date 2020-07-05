@@ -147,8 +147,13 @@ $('#payment').change(e => {
 
 //Listen for a submit event on the submit button
 $('[type="submit"]').click( (e) => {
-    e.preventDefault()
-    console.log("submitted!");
+    //Check if all input validations return true
+    if (condition) {
+        
+    }
+    else{
+        e.preventDefault();
+    }
 });
 
 //Make sure CC option is selected before validating it

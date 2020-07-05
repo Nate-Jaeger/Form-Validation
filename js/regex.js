@@ -1,13 +1,13 @@
 //Validate user's input name. Includes some special characters
 function isValidUsername() {
-    const userName = document.getElementById('name').value;
-    return /^[a-z ,.'-]+$/i.test(userName);
+    const userName = document.getElementById('name');
+    return /^[a-z ,.'-]+$/i.test(userName.value);
 }
 
 //Validate user E-mail
 function isValidEmail() {
-    const email = document.getElementById('mail').value;
-    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i.test(email);
+    const email = document.getElementById('mail');
+    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i.test(email.value);
 }
 
 //Validate if the user has selected at least 1 event
@@ -35,18 +35,18 @@ function isEventChecked(){
 //Validate that user's CC information is correct
 function isValidCard(){
     //Grab values from all CC input fields
-    const cardNum = document.getElementById('cc-num').value;
-    const zipCode = document.getElementById('zip').value;
-    const CVV = document.getElementById('cvv').value;
+    const cardNum = document.getElementById('cc-num');
+    const zipCode = document.getElementById('zip');
+    const CVV = document.getElementById('cvv');
 
     //Check if each CC info input is NOT passing regex, otherwise return true
-    if (!(/^\d{13,16}$/.test(cardNum))) {
+    if (!(/^\d{13,16}$/.test(cardNum.value))) {
         return false;
     }
-    else if (!(/^\d{5}$/.test(zipCode))) {
+    else if (!(/^\d{5}$/.test(zipCode.value))) {
         return false;
     }
-    else if (!(/^\d{3}$/.test(CVV))) {
+    else if (!(/^\d{3}$/.test(CVV.value))) {
         return false;
     }
     //If none of the credentials failed and returned false, true will be returned
