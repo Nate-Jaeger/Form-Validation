@@ -198,6 +198,7 @@ option {
 	border-color: #E21414;
 }
 
+/* Class styling to appy to the Error message shown if no event is selected*/
 .not-checked {
 	display: inline;
 	margin-left: 10%;
