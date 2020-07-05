@@ -11,7 +11,7 @@ function isValidEmail(email) {
     return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i.test(email);
 }
 
-//Validate if the user has selected at least 1 event event
+//Validate if the user has selected at least 1 event
 function isEventChecked(){
     const checkboxes = document.querySelectorAll('[type="checkbox"]');
     let isBoxChecked = false;
