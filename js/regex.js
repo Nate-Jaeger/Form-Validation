@@ -1,13 +1,31 @@
 //Validate user's input name. Includes some special characters
 function isValidUsername() {
     const userName = document.getElementById('name');
-    return /^[a-z ,.'-]+$/i.test(userName.value);
+
+    //Test if username is valid, else apply the invalid class styling
+    if (/^[a-z ,.'-]+$/i.test(userName.value)) {
+        userName.classList.remove("invalid");
+        return true;
+    }
+    else{
+        userName.classList.add("invalid");
+        return false;
+    }
 }
 
 //Validate user E-mail
 function isValidEmail() {
     const email = document.getElementById('mail');
-    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{3})+$/i.test(email.value);
+
+    //Test if email is valid, or add invalid class stylings
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{3})+$/i.test(email.value)) {
+        email.classList.remove("invalid");
+        return true;
+    }
+    else{
+        email.classList.add("invalid");
+        return false;
+    }
 }
 
 //Validate if the user has selected at least 1 event
@@ -23,13 +41,7 @@ function isEventChecked(){
         }
     });
     
-    //If a checkbox has been checked, return true, if not return false
-    if(isBoxChecked){
-        return true;
-    }
-    else{
-        return false;
-    }
+    return isBoxChecked;
 }
 
 //Validate that user's CC information is correct
@@ -39,16 +51,20 @@ function isValidCard(){
     const zipCode = document.getElementById('zip');
     const CVV = document.getElementById('cvv');
 
-    //Check if each CC info input is NOT passing regex, otherwise return true
-    if (!(/^\d{13,16}$/.test(cardNum.value))) {
-        return false;
-    }
-    else if (!(/^\d{5}$/.test(zipCode.value))) {
-        return false;
-    }
-    else if (!(/^\d{3}$/.test(CVV.value))) {
-        return false;
-    }
+    //Check if CC payment option is selected before validating inputs
+    if ($('#payment').val() === "credit card") {
+        //Check if each CC info input is failing regex test, if it is, function will return false
+        if (!(/^\d{13,16}$/.test(cardNum.value))) {
+            return false;
+        }
+        else if (!(/^\d{5}$/.test(zipCode.value))) {
+            return false;
+        }
+        else if (!(/^\d{3}$/.test(CVV.value))) {
+            return false;
+        }
+    } 
+    
     //If none of the credentials failed and returned false, true will be returned
     return true;
 }
@@ -59,13 +75,9 @@ function validateInputs(){
     if(isValidUsername()){
         if(isValidEmail()){
             if(isEventChecked()){
-                if ($('#payment').val() === "credit card") {
-                    if(isValidCard()){
-                        return true;
-                    }
-                } else {
-                    return true;
-                }
+                if(isValidCard()){
+                     return true;
+                 }
             }
         }
     }

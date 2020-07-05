@@ -34,10 +34,6 @@ a {
   text-decoration: none;
 }
 
-.disabled {
-	color: #999999;
-}
-
 /* ================================= 
   Form Element Styles
 ==================================== */
@@ -190,6 +186,16 @@ option {
   content: " ";
   display: table;
   clear: both;
+}
+
+/* Class to style the disabled activities chekcbox labels */
+.disabled {
+	color: #999999;
+}
+
+/* Class styling for invalid inputs*/
+.invalid, .invalid:focus {
+	border-color: red;
 }
 
 /* ================================= 

@@ -110,6 +110,7 @@ $('#bitcoin').hide();
 //Change event listener on the payment select menu
 $('#payment').change(e => {
     const paymentOption = $('#payment').val();
+    //Payment object to show/hide appropriate HTML depending on what payment method was selected
     const payment = {
         creditCard: () => {
             $('#credit-card').show();
