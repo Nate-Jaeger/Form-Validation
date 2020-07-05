@@ -26,10 +26,19 @@ function isValidEmail() {
   }
 }
 
+// Event section error message. Stays hidden until it is shown by error validation
+const legend = document.querySelector(".activities legend");
+const message = document.createElement("p");
+message.classList.add("not-checked");
+message.textContent = "MUST SELECT AT LEAST 1 EVENT";
+legend.appendChild(message);
+message.style.display = "none";
+
 //Validate if the user has selected at least 1 event
 function isEventChecked() {
   const checkboxes = document.querySelectorAll('[type="checkbox"]');
   let isBoxChecked = false;
+  let notCheckedMessage = document.getElementsByClassName("not-checked");
 
   //Loop over all checkboxes and see if any have the checked attribute
   checkboxes.forEach((checkbox) => {
@@ -39,7 +48,13 @@ function isEventChecked() {
     }
   });
 
-  return isBoxChecked;
+  if (!isBoxChecked) {
+    //Show error message
+    message.style.display = "inline";
+    return isBoxChecked;
+  } else {
+    message.style.display = "none";
+  }
 }
 
 //Validate that user's CC information is correct
@@ -92,16 +107,12 @@ function isValidCard() {
 //Function to call all other validation functions
 function validateInputs() {
   //Call functions to enable styling if they are invalid
-  isValidUsername();
-  isValidEmail();
-  isValidCard();
+  let validName = isValidUsername();
+  let validEmail = isValidEmail();
+  let validEvent = isEventChecked();
+  let validCard = isValidCard();
   //Check if all input validations return true
-  if (
-    isValidUsername() &&
-    isValidEmail() &&
-    isEventChecked() &&
-    isValidCard()
-  ) {
+  if (validName && validEmail && validEvent && validCard) {
     return true;
   }
   return false;

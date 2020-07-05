@@ -195,7 +195,14 @@ option {
 
 /* Class styling for invalid inputs*/
 .invalid, .invalid:focus {
-	border-color: red;
+	border-color: #E21414;
+}
+
+.not-checked {
+	display: inline;
+	margin-left: 10%;
+	color: #E21414;
+	font-weight: bold;
 }
 
 /* ================================= 
