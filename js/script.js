@@ -74,17 +74,18 @@ $(".activities").change((e) => {
 
   //Disable activities that have conflicting scheduals
   for (let i = 0; i < activitiesCollection.length; i++) {
+    let currentActivity = activitiesCollection[i];
     let activityTime = $(activitiesCollection[i]).attr("data-day-and-time");
 
-    if (activityTime === $time && activitiesCollection[i] !== activity) {
+    if (activityTime === $time && currentActivity !== activity) {
       if (activity.checked) {
         //Disable conflicting workshops
-        $(activitiesCollection[i]).attr("disabled", true);
-        $(activitiesCollection[i]).parent().addClass("disabled");
+        $(currentActivity).attr("disabled", true);
+        $(currentActivity).parent().addClass("disabled");
       } else {
         //Enable clicked checkbox and remove the disabled class from its label
-        $(activitiesCollection[i]).attr("disabled", false);
-        $(activitiesCollection[i]).parent().removeClass("disabled");
+        $(currentActivity).attr("disabled", false);
+        $(currentActivity).parent().removeClass("disabled");
       }
     }
   }
