@@ -69,8 +69,21 @@ function isValidCard() {
   // Functions to check each input individually
   function validateCard() {
     if (!/^\d{13,16}$/.test(cardNum.value)) {
+      let cardNumberLength = cardNum.value.length;
       cardNum.classList.add("invalid");
       allPass = false;
+
+      //Add functionality to display conditional error messages
+      switch (true) {
+        case (cardNumberLength === 0):
+            console.log("Please enter a credit card number");
+          break;
+        case (cardNumberLength < 16 || cardNumberLength > 16):
+          console.log("Please enter a number between 13 and 16 digits");
+        break;
+        default:
+          break;
+      }
     } else {
       cardNum.classList.remove("invalid");
     }

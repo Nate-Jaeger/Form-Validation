@@ -206,6 +206,10 @@ option {
 	font-weight: bold;
 }
 
+.real-time-error {
+	margin-top: 0;
+	color: #E21414;
+}
 /* ================================= 
   Media Queries
 ==================================== */
