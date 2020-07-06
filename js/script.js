@@ -23,7 +23,7 @@ $("#design").change((e) => {
   const $options = $("#color").children();
 
   //Show T-Shirt color dropdown and label
-  $("#color").show();;
+  $("#color").show();
   $('label[for="color"]').show();
   //Hide the 'Select a Theme' option from the select menu after a theme selection has been made
   $("#design").children().first().hide();
