@@ -107,7 +107,7 @@ function isValidCard() {
 
 //Function to call all other validation functions
 function validateInputs() {
-  //Call functions to enable styling if they are invalid
+  //Call functions to enable styling if they are invalid, and store their boolean value
   let validName = isValidUsername();
   let validEmail = isValidEmail();
   let validEvent = isEventChecked();
