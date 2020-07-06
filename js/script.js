@@ -136,8 +136,8 @@ $("#payment").change((e) => {
   }
 });
 
-//Listen for a click event on the submit button
-$('[type="submit"]').click((e) => {
+// Listen for a submit event on the form
+$("form").submit((e) => {
   //If validate inputs returns false, prevent default and notify user
   if (!validateInputs()) {
     e.preventDefault();
