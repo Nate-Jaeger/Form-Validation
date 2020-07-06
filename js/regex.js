@@ -105,7 +105,7 @@ function isValidCard() {
   return allPass;
 }
 
-//Function to call all other validation functions
+//Function to call all other validation functions, will return boolean value
 function validateInputs() {
   //Call functions to enable styling if they are invalid, and store their boolean value
   let validName = isValidUsername();
