@@ -12,10 +12,9 @@ $("#title").on("change", (e) => {
   }
 });
 
-//Disable the T-Shirt color options until a design is picked
-$('label[for="color"]').text("Please select a T-shirt theme");
-$("#color").attr("disabled", true);
-$("#color").val("");
+//Hide T-Shirt color options dropdown and the corresponding label
+$('label[for="color"]').hide();
+$("#color").hide();
 
 //Change event to switch between states when user is choosing between T-Shirt Themes
 $("#design").change((e) => {
@@ -23,9 +22,9 @@ $("#design").change((e) => {
   //List of options in the select menu
   const $options = $("#color").children();
 
-  //Remove disabled attr on color options and change the text of the T-Shirt color menu
-  $("#color").removeAttr("disabled");
-  $('label[for="color"]').text("Color:");
+  //Show T-Shirt color dropdown and label
+  $("#color").show();;
+  $('label[for="color"]').show();
   //Hide the 'Select a Theme' option from the select menu after a theme selection has been made
   $("#design").children().first().hide();
 
