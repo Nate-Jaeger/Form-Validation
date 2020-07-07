@@ -138,9 +138,8 @@ $("#payment").change((e) => {
 
 // Listen for a submit event on the form
 $("form").submit((e) => {
-  //If validate inputs returns false, prevent default and notify user
+  //If input validation returns false, prevent default and notify user
   if (!validateInputs()) {
     e.preventDefault();
-    console.log("Invalid Inputs");
   }
 });
