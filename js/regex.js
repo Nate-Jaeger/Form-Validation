@@ -68,6 +68,9 @@ function isValidCard() {
 
   // Functions to check each input individually
   function validateCard() {
+    //Try and select error message if it is there
+    const cardErrorMessage = document.querySelector('#cc-num + p');
+
     if (!/^\d{13,16}$/.test(cardNum.value)) {
       let cardNumberLength = cardNum.value.length;
       cardNum.classList.add("invalid");
@@ -76,10 +79,13 @@ function isValidCard() {
       //Add functionality to display conditional error messages
       switch (true) {
         case (cardNumberLength === 0):
-            console.log("Please enter a credit card number");
-          break;
+          if (cardErrorMessage === null) {
+            $('#cc-num').after($('<p class="real-time-error">Please enter a credit card number</p>'));
+            break;
+          }
         case (cardNumberLength < 16 || cardNumberLength > 16):
-          console.log("Please enter a number between 13 and 16 digits");
+          
+          $('#cc-num').after($('<p class="real-time-error">Card number must be between 13 and 16 digits</p>'));
         break;
         default:
           break;
