@@ -76,23 +76,21 @@ function isValidCard() {
       let cardNumberLength = cardNum.value.length;
       cardNum.classList.add("invalid");
       allPass = false;
-
-      //Add functionality to display conditional error messages
-      //Normally don't hard code a conditional to be true, but this will only run if the validation fails
-      switch (true) {
-        case (cardNumberLength === 0):
-          if (noCardNumber === null) {
-            $('#cc-num').after($('<p id="no-card-number" class="real-time-error">Please enter a credit card number</p>'));
-            break;
+      
+      if(cardNumberLength === 0){
+        if (noCardNumber === null) {
+          const message = $('<p id="no-card-number" class="real-time-error">Please enter a credit card number</p>');
+            $('#cc-num').after(message);
           }
-          break;
-        case (cardNumberLength < 16 || cardNumberLength > 16):
-          if (cardLengthError === null) {
-            $('#cc-num').after($('<p id="card-length-error" class="real-time-error">Card number must be between 13 and 16 digits</p>'));
-            break;
-          }
-        default:
-          break;
+      }
+      else if(cardNumberLength < 16 || cardNumberLength > 16){
+        if (cardLengthError === null) {
+          const message = document.createElement('p');
+          message.textContent = "Card number must be between 13 and 16 digits";
+          message.setAttribute("class", "real-time-error");
+          message.setAttribute("id", "card-length-error");
+            $('#cc-num').after(message);
+        }
       }
     } else {
       cardNum.classList.remove("invalid");
