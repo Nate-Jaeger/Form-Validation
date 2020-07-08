@@ -8,9 +8,9 @@ message.style.display = "none";
 
 //Create & append a paragraph to change the text content for real time error messages
 const cardNum = document.getElementById("cc-num");
-const realTimeError = document.createElement("p");
-realTimeError.classList.add("real-time-error");
-cardNum.after(realTimeError);
+const conditionalErrorMessage = document.createElement("p");
+conditionalErrorMessage.classList.add("real-time-error");
+cardNum.after(conditionalErrorMessage);
 
 //Validate user's input name. Includes some special characters
 function isValidUsername() {
@@ -80,14 +80,14 @@ function isValidCard() {
 
       //Test which error message to display
       if (cardNumberLength === 0) {
-        realTimeError.textContent = "Please enter a credit card number";
+        conditionalErrorMessage.textContent = "Please enter a credit card number";
       } else if (cardNumberLength > 16 || cardNumberLength < 13) {
-        realTimeError.textContent =
+        conditionalErrorMessage.textContent =
           "Card number must be between 13 and 16 digits";
       }
     } else {
       cardNum.classList.remove("invalid");
-      realTimeError.textContent = "";
+      conditionalErrorMessage.textContent = "";
     }
   }
 
