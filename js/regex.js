@@ -8,8 +8,8 @@ message.style.display = "none";
 
 //Create & append a paragraph to change the text content for real time error messages
 const cardNum = document.getElementById("cc-num");
-const realTimeError = document.createElement('p');
-realTimeError.classList.add('real-time-error');
+const realTimeError = document.createElement("p");
+realTimeError.classList.add("real-time-error");
 cardNum.after(realTimeError);
 
 //Validate user's input name. Includes some special characters
@@ -39,8 +39,6 @@ function isValidEmail() {
     return false;
   }
 }
-
-
 
 //Validate if the user has selected at least 1 event
 function isEventChecked() {
@@ -75,21 +73,19 @@ function isValidCard() {
 
   // Functions to check each input individually
   function validateCard() {
-
     if (!/^\d{13,16}$/.test(cardNum.value)) {
       let cardNumberLength = cardNum.value.length;
       cardNum.classList.add("invalid");
       allPass = false;
 
       //Test which error message to display
-      if(cardNumberLength === 0){
-        realTimeError.textContent = "Please enter a credit card number"
+      if (cardNumberLength === 0) {
+        realTimeError.textContent = "Please enter a credit card number";
+      } else if (cardNumberLength > 16 || cardNumberLength < 13) {
+        realTimeError.textContent =
+          "Card number must be between 13 and 16 digits";
       }
-      else if(cardNumberLength > 16 || cardNumberLength < 13){
-        realTimeError.textContent = "Card number must be between 13 and 16 digits";
-      }
-    } 
-    else {
+    } else {
       cardNum.classList.remove("invalid");
       realTimeError.textContent = "";
     }
