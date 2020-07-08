@@ -1,3 +1,17 @@
+// Event section error message. Stays hidden until it is shown by error validation
+const legend = document.querySelector(".activities legend");
+const message = document.createElement("p");
+message.classList.add("not-checked");
+message.textContent = "*MUST SELECT AT LEAST 1 EVENT*";
+legend.appendChild(message);
+message.style.display = "none";
+
+//Create & append a paragraph to change the text content for real time error messages
+const cardNum = document.getElementById("cc-num");
+const realTimeError = document.createElement('p');
+realTimeError.classList.add('real-time-error');
+cardNum.after(realTimeError);
+
 //Validate user's input name. Includes some special characters
 function isValidUsername() {
   const userName = document.getElementById("name");
@@ -26,13 +40,7 @@ function isValidEmail() {
   }
 }
 
-// Event section error message. Stays hidden until it is shown by error validation
-const legend = document.querySelector(".activities legend");
-const message = document.createElement("p");
-message.classList.add("not-checked");
-message.textContent = "*MUST SELECT AT LEAST 1 EVENT*";
-legend.appendChild(message);
-message.style.display = "none";
+
 
 //Validate if the user has selected at least 1 event
 function isEventChecked() {
@@ -61,7 +69,6 @@ function isEventChecked() {
 //Validate that user's CC information is correct
 function isValidCard() {
   //Grab elements of all CC input fields
-  const cardNum = document.getElementById("cc-num");
   const zipCode = document.getElementById("zip");
   const CVV = document.getElementById("cvv");
   let allPass = true;
@@ -70,31 +77,21 @@ function isValidCard() {
   function validateCard() {
 
     if (!/^\d{13,16}$/.test(cardNum.value)) {
-      //Try and select error message to see if it needs to be applied or not
-      const noCardNumber = document.querySelector('#no-card-number');
-      const cardLengthError = document.querySelector('#card-length-error');
       let cardNumberLength = cardNum.value.length;
       cardNum.classList.add("invalid");
       allPass = false;
-      
-      if(cardNumberLength === 0){
-        if (noCardNumber === null) {
-          const message = $('<p id="no-card-number" class="real-time-error">Please enter a credit card number</p>');
-            $('#cc-num').after(message);
-          }
-      }
-      else if(cardNumberLength < 16 || cardNumberLength > 16){
-        if (cardLengthError === null) {
-          const message = document.createElement('p');
-          message.textContent = "Card number must be between 13 and 16 digits";
-          message.setAttribute("class", "real-time-error");
-          message.setAttribute("id", "card-length-error");
-            $('#cc-num').after(message);
-        }
-      }
-    } else {
-      cardNum.classList.remove("invalid");
 
+      //Test which error message to display
+      if(cardNumberLength === 0){
+        realTimeError.textContent = "Please enter a credit card number"
+      }
+      else if(cardNumberLength > 16 || cardNumberLength < 13){
+        realTimeError.textContent = "Card number must be between 13 and 16 digits";
+      }
+    } 
+    else {
+      cardNum.classList.remove("invalid");
+      realTimeError.textContent = "";
     }
   }
 
