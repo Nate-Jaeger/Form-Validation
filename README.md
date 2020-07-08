@@ -22,3 +22,7 @@
 
 ** Exceeds Expectations **
 -Form will hide T-Shirt color menu and label until user selects a valid theme
+
+-CC field will display an error message depending on the error
+    -If field was left blank it will notify user the enter a CC number
+    -If number is > 16 or <13 it will notify the user it needs to be between 13-16 characters long

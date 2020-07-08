@@ -210,6 +210,7 @@ option {
 .real-time-error {
 	margin-top: 0;
 	color: #E21414;
+	font-weight: bold;
 }
 /* ================================= 
   Media Queries
