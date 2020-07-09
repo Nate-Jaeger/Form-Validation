@@ -50,7 +50,6 @@ function isValidEmail() {
 function isEventChecked() {
   const checkboxes = document.querySelectorAll('[type="checkbox"]');
   let isBoxChecked = false;
-  let notCheckedMessage = document.getElementsByClassName("not-checked");
 
   //Loop over all checkboxes and see if any have the checked attribute
   checkboxes.forEach((checkbox) => {
@@ -80,7 +79,7 @@ function isValidCard() {
   // Functions to check each input individually
   function validateCard() {
     if (!/^\d{13,16}$/.test(cardNum.value)) {
-      let cardNumberLength = cardNum.value.length;
+      const cardNumberLength = cardNum.value.length;
       cardNum.classList.add("invalid");
       allPass = false;
 
@@ -129,10 +128,10 @@ function isValidCard() {
 //Function to call all other validation functions, will return boolean value
 function validateInputs() {
   //Call functions to enable styling if they are invalid, and store their boolean value
-  let validName = isValidUsername();
-  let validEmail = isValidEmail();
-  let validEvent = isEventChecked();
-  let validCard = isValidCard();
+  const validName = isValidUsername();
+  const validEmail = isValidEmail();
+  const validEvent = isEventChecked();
+  const validCard = isValidCard();
   //Check if all input validations return true
   if (validName && validEmail && validEvent && validCard) {
     return true;
