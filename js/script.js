@@ -4,6 +4,9 @@ $("#name").focus();
 //Hide the 'Other Role' input until the user selects the other option
 $("#other-title").hide();
 
+//Keyup event listener on the email input
+$(email).keyup(isValidEmail);
+
 $("#title").on("change", (e) => {
   if (e.target.value === "other") {
     $("#other-title").show();

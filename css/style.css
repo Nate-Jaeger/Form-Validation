@@ -206,12 +206,22 @@ option {
 	font-weight: bold;
 }
 
-/* Class styling for Real time error messages on the CC inputs*/
-.real-time-error {
+/* Class styling for conditional error messages on the CC inputs*/
+.conditional-error {
 	margin-top: 0;
 	color: #E21414;
 	font-weight: bold;
 }
+
+/* Styling for real time error message*/
+.real-time-error {
+	display: inline-block;
+    margin-bottom: 3%;
+    margin-top: 0;
+    color: #E21414;
+    font-weight: bold;
+}
+
 /* ================================= 
   Media Queries
 ==================================== */

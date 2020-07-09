@@ -9,8 +9,14 @@ message.style.display = "none";
 //Create & append a paragraph to change the text content for real time error messages
 const cardNum = document.getElementById("cc-num");
 const conditionalErrorMessage = document.createElement("p");
-conditionalErrorMessage.classList.add("real-time-error");
+conditionalErrorMessage.classList.add("conditional-error");
 cardNum.after(conditionalErrorMessage);
+
+//Create real time error message to display under the email input field 
+const email = document.getElementById("mail");
+const realTimeMessage = document.createElement("p");
+realTimeMessage.classList.add('real-time-error');
+email.after(realTimeMessage);
 
 //Validate user's input name. Includes some special characters
 function isValidUsername() {
@@ -28,14 +34,14 @@ function isValidUsername() {
 
 //Validate user E-mail
 function isValidEmail() {
-  const email = document.getElementById("mail");
-
   //Test if email is valid, or add invalid class stylings
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{3})+$/i.test(email.value)) {
     email.classList.remove("invalid");
+    realTimeMessage.textContent = "";
     return true;
   } else {
     email.classList.add("invalid");
+    realTimeMessage.textContent = 'Email must be in format of "example@email.com"';
     return false;
   }
 }
